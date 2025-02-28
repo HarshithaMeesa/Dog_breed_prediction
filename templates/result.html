@@ -1,0 +1,98 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ info.name }} - Dog Info</title>
+  <!-- Bootstrap CSS
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #f8f9fa;
+      padding-top: 20px;
+    }
+    .dog-info {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .dog-image {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="{{ url_for('home') }}" class="btn btn-secondary mb-3">Back</a>
+    <div class="dog-info">
+      <h2>{{ info.name }}</h2>
+      {% if info.image_url %}
+      <img src="{{ info.image_url }}" alt="{{ info.name }}" class="dog-image">
+      {% endif %}
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Bred For:</strong> {{ info.bred_for }}</li>
+        <li class="list-group-item"><strong>Temperament:</strong> {{ info.temperament }}</li>
+        <li class="list-group-item"><strong>Life Span:</strong> {{ info.life_span }}</li>
+        <li class="list-group-item"><strong>Origin:</strong> {{ info.origin }}</li>
+        <li class="list-group-item"><strong>Weight:</strong> {{ info.weight }}</li>
+        <li class="list-group-item"><strong>Height:</strong> {{ info.height }}</li>
+        <li class="list-group-item"><strong>Breed Group:</strong> {{ info.breed_group }}</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ info.name if info.name else breed }} - Dog Info</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #f8f9fa;
+      padding-top: 20px;
+    }
+    .dog-info {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .dog-image {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">Back</a>
+    <div class="dog-info">
+      <h2>Predicted Breed: {{ breed }}</h2>
+      <img src="{{ url_for('static', filename='images/Captured_dog_imgs/' + image_filename) }}" alt="Captured Dog" class="dog-image">
+      {% if info.error %} 
+        <p>{{ info.error }}</p>
+      {% else %}
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Name:</strong> {{ info.name }}</li>
+        <li class="list-group-item"><strong>Bred For:</strong> {{ info.bred_for }}</li>
+        <li class="list-group-item"><strong>Temperament:</strong> {{ info.temperament }}</li>
+        <li class="list-group-item"><strong>Life Span:</strong> {{ info.life_span }}</li>
+        <li class="list-group-item"><strong>Origin:</strong> {{ info.origin }}</li>
+        <li class="list-group-item"><strong>Weight:</strong> {{ info.weight }}</li>
+        <li class="list-group-item"><strong>Height:</strong> {{ info.height }}</li>
+        <li class="list-group-item"><strong>Breed Group:</strong> {{ info.breed_group }}</li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
