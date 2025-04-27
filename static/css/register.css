@@ -1,0 +1,256 @@
+
+/*
+body {
+    background: url('../images/dog_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.register-card:hover {
+    transform: translateY(-5px);
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-icon {
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.btn-register {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    .register-card {
+        padding: 20px;
+    }
+    .btn-register {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+*/
+
+/*
+body {
+    background: url('../images/dog_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.register-card {
+    
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    
+    -webkit-backdrop-filter: blur(10px); 
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    
+}
+
+.register-card:hover {
+    transform: translateY(-5px);
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-icon {
+    
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #0b7adb;
+}
+
+.btn-register {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #ea4b0c;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+    background-color: hsla(0, 90%, 42%, 0.437);
+}
+
+.alert {
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    .register-card {
+        padding: 25px;
+    }
+    .btn-register {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+*/
+
+body {
+    background: url('../images/dog_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.register-card {
+    background: hsla(0, 16%, 96%, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.register-card:hover {
+    transform: translateY(-5px);
+}
+
+.form-group label {
+    color: #210202;
+    font-weight: 500;
+}
+
+.custom-input {
+    background: transparent;
+    border: 2px solid hsla(0, 2%, 17%, 0.437);
+    border-radius: 10px;
+    color: hsl(0, 4%, 11%);
+    padding: 10px 15px;
+    transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+    border-color: hsla(180, 75%, 49%, 0.7);
+    box-shadow: none;
+    outline: none;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    color: hsla(0, 2%, 9%, 0.7);
+    padding: 0 10px;
+}
+
+.btn-custom-register {
+    background: #d76814;
+    color: hsla(0, 90%, 42%, 0.7);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-custom-register:hover {
+    transform: translateY(-2px);
+    color: hsla(0, 90%, 32%, 0.9);
+}
+
+.alert {
+    border-radius: 10px;
+    color: #d81d1d;
+    background: hsla(0, 90%, 42%, 0.5);
+    border: none;
+}
+
+.alert-success {
+    background: rgba(10, 194, 10, 0.5);
+}
+
+.alert-danger {
+    background: rgba(16, 15, 15, 0.5);
+}
+
+@media (max-width: 576px) {
+    .register-card {
+        padding: 20px;
+    }
+    .btn-custom-register {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+.label {
+    color : #ce1a1a;
+}
+
+::placeholder {
+    color: rgb(247, 239, 239);
+    opacity: 1; 
+  }
+  
+  ::-ms-input-placeholder { 
+    color: rgb(247, 239, 239);
+  } 
+
+  .text-center mt-3{
+    color : #fff;
+  }
+  
