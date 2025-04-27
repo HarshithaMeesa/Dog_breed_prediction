@@ -49,7 +49,75 @@
 </body>
 </html> -->
 
+<!--
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dog Info Capture</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: url('{{ url_for("static", filename="images/dog_background.jpg") }}') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    .container { margin-top: 50px; }
+    .video-container {
+      position: relative;
+      width: 400px;
+      margin: auto;
+    }
+    video, canvas {
+      border-radius: 10px;
+    }
+    #capture {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h1 class="display-4">Capture Your Dog's Image</h1>
+    <p class="lead">Click the button to capture an image, and let our model fetch details about your dog's breed.</p>
+    <div class="video-container">
+      <video id="video" width="400" height="300" autoplay></video>
+      <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
+    </div>
+    <button id="capture" class="btn btn-primary btn-lg">Capture Image</button>
+    <form id="uploadForm" method="POST" action="/upload">
+      <input type="hidden" name="image_data" id="image_data">
+    </form>
+     <a href="{{ url_for('logout') }}">Logout</a>
+  </div>
+  <script>
+    // Access the device camera and stream to the video element
+    const video = document.getElementById('video');
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+      });
+    }
+
+    // When the capture button is clicked, draw the current video frame to canvas
+    document.getElementById("capture").addEventListener("click", function() {
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, 400, 300);
+      // Convert canvas image to base64 string
+      const dataURL = canvas.toDataURL('image/jpeg');
+      document.getElementById("image_data").value = dataURL;
+      // Submit the form to send the image to the server
+      document.getElementById("uploadForm").submit();
+    });
+  </script>
+</body>
+</html>
+ ---->
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -88,6 +156,7 @@
     <form id="uploadForm" method="POST" action="/upload">
       <input type="hidden" name="image_data" id="image_data">
     </form>
+     <a href="{{ url_for('logout') }}">Logout</a>
   </div>
   <script>
     // Access the device camera and stream to the video element
