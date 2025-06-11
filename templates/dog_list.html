@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog List - Dog Breed Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('/static/images/dog_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .breed-card {
+            background: hsla(0, 16%, 96%, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .btn-custom {
+            background: #d76814;
+            color: hsla(0, 90%, 42%, 0.7);
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            color: hsla(0, 90%, 32%, 0.9);
+        }
+        h2 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Dog Breeds List</h2>
+        <div class="row">
+            {% for breed in breeds %}
+                <div class="col-md-4">
+                    <div class="breed-card">
+                        <h5>{{ breed.name }}</h5>
+                        <p><strong>Style:</strong> {{ breed.style }}</p>
+                        <p><strong>Fur:</strong> {{ breed.fur }}</p>
+                        <p><strong>Health:</strong> {{ breed.health }}</p>
+                        <a href="{{ url_for('dog_details', breed_name=breed.name) }}" class="btn btn-primary btn-block mb-2">View Details</a>
+                        <form method="POST" action="{{ url_for('save_breed_from_list') }}">
+                            <input type="hidden" name="breed_name" value="{{ breed.name }}">
+                            <button type="submit" class="btn btn-custom btn-block">Save</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

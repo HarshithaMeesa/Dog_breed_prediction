@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Dog Breed Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('/static/images/dog_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .edit-card {
+            background: hsla(0, 16%, 96%, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background: #d76814;
+            color: hsla(0, 90%, 42%, 0.7);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            color: hsla(0, 90%, 32%, 0.9);
+        }
+        h2, h3 {
+            color: white;
+        }
+        label {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <!-- Edit Profile Form -->
+                <div class="edit-card">
+                    <h2 class="text-center mb-4">Edit Profile</h2>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="update_profile" value="1">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" placeholder="Enter new username">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email if user.email else '' }}" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ user.phone_number if user.phone_number else '' }}" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_picture">Profile Picture</label>
+                            <input type="file" class="form-control-file" id="profile_picture" name="profile_picture" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="current_password">Current Password (required)</label>
+                            <input type="password" class="form-control" id="current_password" name="current_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom btn-block">Save Changes</button>
+                        <a href="{{ url_for('profile') }}" class="btn btn-secondary btn-block mt-2">Cancel</a>
+                    </form>
+                </div>
+
+                <!-- Change Password Form -->
+                <div class="edit-card">
+                    <h3 class="text-center mb-4">Change Password</h3>
+                    <form method="POST">
+                        <input type="hidden" name="change_password" value="1">
+                        <div class="form-group">
+                            <label for="current_password_pwd">Current Password</label>
+                            <input type="password" class="form-control" id="current_password_pwd" name="current_password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new_password">New Password</label>
+                            <input type="password" class="form-control" id="new_password" name="new_password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm New Password</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom btn-block">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                    alert.classList.add('fade');
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

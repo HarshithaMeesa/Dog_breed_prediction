@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Search History - Dog Breed Classifier{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Search History</h2>
+    {% if history %}
+        <ul class="list-group">
+            {% for item in history %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('dog_details', breed_name=item[0]) }}">{{ item[0] }}</a> - Searched on {{ item[1] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-center">No search history found.</p>
+    {% endif %}
+</div>
+{% endblock %}

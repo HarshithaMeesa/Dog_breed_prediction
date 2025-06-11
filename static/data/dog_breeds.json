@@ -1,0 +1,144 @@
+{
+  "breeds": [
+    {
+      "name": "Labrador Retriever",
+      "style": "Friendly, Active, Outgoing",
+      "fur": "Short, dense coat; colors include yellow, black, chocolate",
+      "food_diet": "High-quality dry kibble or wet food; balanced diet with protein (chicken, beef), carbs (rice, oats), and fats (fish oil)",
+      "health": "Prone to hip dysplasia, obesity, ear infections",
+      "not_eat": "Chocolate, grapes, onions, garlic, fatty foods",
+      "nutrients_per_day": {
+        "protein": "20-25% of diet (approx. 50-70g for a 60lb dog)",
+        "fat": "10-15% of diet (approx. 20-30g for a 60lb dog)",
+        "calories": "1200-1500 kcal for an active adult",
+        "notes": "Adjust based on activity level; include omega-3 for joint health"
+      }
+    },
+    {
+      "name": "German Shepherd",
+      "style": "Intelligent, Confident, Courageous",
+      "fur": "Medium-length, thick coat; colors include tan, black",
+      "food_diet": "Protein-rich diet (lamb, fish); carbs like sweet potatoes; avoid grain if sensitive",
+      "health": "Prone to hip dysplasia, bloat, allergies",
+      "not_eat": "Raw dough, alcohol, avocado, macadamia nuts",
+      "nutrients_per_day": {
+        "protein": "22-28% of diet (approx. 60-80g for a 70lb dog)",
+        "fat": "12-18% of diet (approx. 25-35g for a 70lb dog)",
+        "calories": "1500-1800 kcal for an active adult",
+        "notes": "Add glucosamine for joint support"
+      }
+    },
+    {
+      "name": "Golden Retriever",
+      "style": "Friendly, Intelligent, Devoted",
+      "fur": "Long, wavy coat; golden shades",
+      "food_diet": "High-protein, fish oil, brown rice or sweet potatoes",
+      "health": "Prone to cancer, hip dysplasia, heart issues",
+      "not_eat": "Salty foods, xylitol, caffeinated drinks",
+      "nutrients_per_day": {
+        "protein": "22-25% of diet",
+        "fat": "12-15% of diet",
+        "calories": "1300-1600 kcal for an adult",
+        "notes": "Include taurine for heart health"
+      }
+    },
+    {
+      "name": "Beagle",
+      "style": "Curious, Friendly, Merry",
+      "fur": "Short coat; colors include tricolor, lemon, red & white",
+      "food_diet": "Moderate-protein dry kibble; include fiber (carrots, pumpkin)",
+      "health": "Prone to obesity, epilepsy, hypothyroidism",
+      "not_eat": "Chocolate, bones, artificial sweeteners",
+      "nutrients_per_day": {
+        "protein": "20-24% of diet",
+        "fat": "10-15% of diet",
+        "calories": "700-1000 kcal depending on size",
+        "notes": "Avoid overfeeding; monitor weight closely"
+      }
+    },
+    {
+      "name": "Bulldog",
+      "style": "Calm, Courageous, Friendly",
+      "fur": "Short, smooth coat; usually white, fawn, brindle",
+      "food_diet": "Lean meats, rice, sweet potato; avoid high-fat content",
+      "health": "Prone to respiratory issues, joint problems, skin infections",
+      "not_eat": "Greasy food, dairy, spicy items",
+      "nutrients_per_day": {
+        "protein": "18-22% of diet",
+        "fat": "10-14% of diet",
+        "calories": "900-1200 kcal daily",
+        "notes": "Low activity needs; control weight to avoid strain on joints"
+      }
+    },
+    {
+      "name": "Poodle",
+      "style": "Active, Proud, Very Smart",
+      "fur": "Curly, hypoallergenic coat; black, white, apricot",
+      "food_diet": "High-quality protein (salmon, duck), brown rice, vegetables",
+      "health": "Prone to eye disorders, epilepsy, hip dysplasia",
+      "not_eat": "Garlic, onions, high-sugar treats",
+      "nutrients_per_day": {
+        "protein": "20-28% of diet",
+        "fat": "10-18% of diet",
+        "calories": "800-1500 kcal depending on size (toy/miniature/standard)",
+        "notes": "Brush coat regularly; include antioxidants for eye health"
+      }
+    },
+    {
+      "name": "Rottweiler",
+      "style": "Loyal, Loving, Confident Guardian",
+      "fur": "Short, coarse coat; black with rust markings",
+      "food_diet": "Protein-rich (beef, chicken), whole grains, vegetables",
+      "health": "Prone to hip/elbow dysplasia, heart issues",
+      "not_eat": "Cooked bones, salty snacks, alcohol",
+      "nutrients_per_day": {
+        "protein": "22-26% of diet",
+        "fat": "12-16% of diet",
+        "calories": "1800-2200 kcal for an active adult",
+        "notes": "Include joint supplements; monitor heart health"
+      }
+    },
+    {
+      "name": "Yorkshire Terrier",
+      "style": "Feisty, Affectionate, Sprightly",
+      "fur": "Silky, long coat; blue and tan",
+      "food_diet": "Small breed kibble, chicken, turkey, vegetables",
+      "health": "Prone to dental issues, collapsed trachea, hypoglycemia",
+      "not_eat": "Hard bones, fatty meat, chocolate",
+      "nutrients_per_day": {
+        "protein": "25-30% of diet",
+        "fat": "15-20% of diet",
+        "calories": "200-400 kcal depending on size",
+        "notes": "Frequent meals; monitor for signs of low blood sugar"
+      }
+    },
+    {
+      "name": "Boxer",
+      "style": "Bright, Fun-Loving, Active",
+      "fur": "Short coat; fawn, brindle, white markings",
+      "food_diet": "Lean meats, whole grains, sweet potato",
+      "health": "Prone to heart conditions, cancer, joint issues",
+      "not_eat": "Onions, grapes, high-fat snacks",
+      "nutrients_per_day": {
+        "protein": "24-28% of diet",
+        "fat": "12-18% of diet",
+        "calories": "1500-2000 kcal daily",
+        "notes": "High-energy needs; include taurine and L-carnitine"
+      }
+    },
+    {
+      "name": "Dachshund",
+      "style": "Clever, Curious, Spunky",
+      "fur": "Smooth, long-haired or wire-haired; various colors",
+      "food_diet": "Dry kibble with chicken, rice, vegetables",
+      "health": "Prone to back problems, obesity, dental issues",
+      "not_eat": "Junk food, chocolate, sugary treats",
+      "nutrients_per_day": {
+        "protein": "20-24% of diet",
+        "fat": "10-14% of diet",
+        "calories": "400-600 kcal daily",
+        "notes": "Avoid jumping; maintain lean body to protect spine"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Details - Dog Breed Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('/static/images/dog_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .details-card {
+            background: hsla(0, 16%, 96%, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        h2, p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="details-card">
+            <h2 class="text-center mb-4">{{ breed.name }}</h2>
+            <p><strong>Style:</strong> {{ breed.style }}</p>
+            <p><strong>Fur:</strong> {{ breed.fur }}</p>
+            <p><strong>Food Diet:</strong> {{ breed.food_diet }}</p>
+            <p><strong>Health:</strong> {{ breed.health }}</p>
+            <p><strong>Foods to Avoid:</strong> {{ breed.not_eat }}</p>
+            <p><strong>Nutrients Per Day:</strong></p>
+            <ul>
+                <li><strong>Protein:</strong> {{ breed.nutrients_per_day.protein }}</li>
+                <li><strong>Fat:</strong> {{ breed.nutrients_per_day.fat }}</li>
+                <li><strong>Calories:</strong> {{ breed.nutrients_per_day.calories }}</li>
+                <li><strong>Notes:</strong> {{ breed.nutrients_per_day.notes }}</li>
+            </ul>
+            <div class="text-center">
+                <a href="{{ url_for('dog_list') }}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

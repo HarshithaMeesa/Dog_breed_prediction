@@ -1,0 +1,42 @@
+body {
+    background: url('../images/dog_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.jumbotron {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.list-group-item {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+h5 {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+    border-radius: 5px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

@@ -1,184 +1,229 @@
-<!-- 
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dog Info Home</title>
-  <!-- Bootstrap CSS 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      background: url("{{ url_for('static', filename='images/dog_background.jpg') }}") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      height: 100vh;
-      margin: 0;
-    }
-    .overlay {
-      background: rgba(0, 0, 0, 0.6);
-      height: 100vh;
-    }
-    .centered {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: center;
-    }
-    .form-control {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-  </style>
-</head>
-<body>
-  <div class="overlay">
-    <div class="container">
-      <div class="centered">
-        <h1 class="display-4">Welcome to Dog Info App</h1>
-        <p class="lead">Discover detailed information about your favorite dog breeds</p>
-        <form method="post">
-          <div class="form-group">
-            <input type="text" class="form-control" name="breed" placeholder="e.g., Labrador retriever" required>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg">Get Info</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</body>
-</html> -->
+{% block title %}Home - Dog Breed Classifier{% endblock %}
 
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dog Info Capture</title>
-  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      background: url('{{ url_for("static", filename="images/dog_background.jpg") }}') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-    }
-    .container { margin-top: 50px; }
-    .video-container {
-      position: relative;
-      width: 400px;
-      margin: auto;
-    }
-    video, canvas {
-      border-radius: 10px;
-    }
-    #capture {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container text-center">
-    <h1 class="display-4">Capture Your Dog's Image</h1>
-    <p class="lead">Click the button to capture an image, and let our model fetch details about your dog's breed.</p>
-    <div class="video-container">
-      <video id="video" width="400" height="300" autoplay></video>
-      <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
+{% block navbar_right %}
+<div class="dropdown">
+    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ url_for('index') }}">Home</a>
+        <a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a>
+        <a class="dropdown-item" href="{{ url_for('search_history') }}">Search History</a>
+        <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
     </div>
-    <button id="capture" class="btn btn-primary btn-lg">Capture Image</button>
-    <form id="uploadForm" method="POST" action="/upload">
-      <input type="hidden" name="image_data" id="image_data">
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Dog Breed Classifier</h1>
+    <p class="lead">Search for a dog breed or capture a photo to identify it.</p>
+    <form method="GET" action="{{ url_for('search') }}" class="mt-4">
+        <div class="input-group w-50 mx-auto">
+            <input type="text" class="form-control" name="breed_name" placeholder="Enter breed name" required>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </div>
     </form>
-     <a href="{{ url_for('logout') }}">Logout</a>
-  </div>
-  <script>
-    // Access the device camera and stream to the video element
-    const video = document.getElementById('video');
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-        video.srcObject = stream;
-        video.play();
-      });
-    }
+</div>
 
-    // When the capture button is clicked, draw the current video frame to canvas
-    document.getElementById("capture").addEventListener("click", function() {
-      const canvas = document.getElementById('canvas');
-      const context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, 400, 300);
-      // Convert canvas image to base64 string
-      const dataURL = canvas.toDataURL('image/jpeg');
-      document.getElementById("image_data").value = dataURL;
-      // Submit the form to send the image to the server
-      document.getElementById("uploadForm").submit();
-    });
-  </script>
-</body>
-</html>
- ---->
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dog Info Capture</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      background: url('{{ url_for("static", filename="images/dog_background.jpg") }}') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-    }
-    .container { margin-top: 50px; }
-    .video-container {
-      position: relative;
-      width: 400px;
-      margin: auto;
-    }
-    video, canvas {
-      border-radius: 10px;
-    }
-    #capture {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container text-center">
-    <h1 class="display-4">Capture Your Dog's Image</h1>
-    <p class="lead">Click the button to capture an image, and let our model fetch details about your dog's breed.</p>
-    <div class="video-container">
-      <video id="video" width="400" height="300" autoplay></video>
-      <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
-    </div>
-    <button id="capture" class="btn btn-primary btn-lg">Capture Image</button>
-    <form id="uploadForm" method="POST" action="/upload">
-      <input type="hidden" name="image_data" id="image_data">
+<div class="text-center mb-4">
+    <h4>Capture a Dog Photo</h4>
+    <form id="captureForm" method="POST" action="{{ url_for('upload') }}">
+        <input type="hidden" id="imageData" name="image_data">
     </form>
-     <a href="{{ url_for('logout') }}">Logout</a>
-  </div>
-  <script>
-    // Access the device camera and stream to the video element
-    const video = document.getElementById('video');
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-        video.srcObject = stream;
-        video.play();
-      });
-    }
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#photoOptionsModal">Take Photo</button>
+</div>
 
-    // When the capture button is clicked, draw the current video frame to canvas
-    document.getElementById("capture").addEventListener("click", function() {
-      const canvas = document.getElementById('canvas');
-      const context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, 400, 300);
-      // Convert canvas image to base64 string
-      const dataURL = canvas.toDataURL('image/jpeg');
-      document.getElementById("image_data").value = dataURL;
-      // Submit the form to send the image to the server
-      document.getElementById("uploadForm").submit();
+<!-- Modal for Photo Options -->
+<div class="modal fade" id="photoOptionsModal" tabindex="-1" role="dialog" aria-labelledby="photoOptionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="photoOptionsModalLabel">Select Photo Source</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <button type="button" class="btn btn-primary mb-3" onclick="openCamera()">Capture from Camera</button>
+                <button type="button" class="btn btn-secondary" onclick="selectFromFiles()">Select from Files</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Camera Capture -->
+<div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-labelledby="cameraModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cameraModalLabel">Take a Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="stopCamera()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="videoContainer" style="position: relative;">
+                    <video id="video" width="100%" autoplay></video>
+                    <div id="captureFrame" style="position: absolute; border: 2px solid red; width: 224px; height: 224px; left: 50%; top: 50%; transform: translate(-50%, -50%); cursor: move;"></div>
+                </div>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-primary" onclick="capturePhoto()">Capture</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Dogs List</h5>
+                <p class="card-text">Explore details of various dog breeds.</p>
+                <a href="{{ url_for('dog_list') }}" class="btn btn-outline-primary">View Dogs List</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let stream = null;
+
+// Function to resize image while preserving aspect ratio
+function resizeAndUpload(dataUrl) {
+    const img = new Image();
+    img.onload = function() {
+        const targetSize = 224;
+        const canvas = document.createElement('canvas');
+        canvas.width = targetSize;
+        canvas.height = targetSize;
+        const ctx = canvas.getContext('2d');
+
+        // Calculate dimensions to maintain aspect ratio
+        let width = img.width;
+        let height = img.height;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        if (width > height) {
+            height = (targetSize / width) * height;
+            width = targetSize;
+            offsetY = (targetSize - height) / 2;
+        } else {
+            width = (targetSize / height) * width;
+            height = targetSize;
+            offsetX = (targetSize - width) / 2;
+        }
+
+        // Fill background with black (for padding)
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, targetSize, targetSize);
+
+        // Draw the image with correct aspect ratio
+        ctx.drawImage(img, offsetX, offsetY, width, height);
+
+        const resizedDataUrl = canvas.toDataURL('image/jpeg');
+        document.getElementById('imageData').value = resizedDataUrl;
+        document.getElementById('captureForm').submit();
+    };
+    img.src = dataUrl;
+}
+
+// Camera capture with movable frame
+async function openCamera() {
+    $('#photoOptionsModal').modal('hide');
+    $('#cameraModal').modal('show');
+    const video = document.getElementById('video');
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        video.srcObject = stream;
+    } catch (error) {
+        alert("Could not access the camera. Please ensure permissions are granted.");
+        $('#cameraModal').modal('hide');
+    }
+}
+
+function stopCamera() {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+    }
+}
+
+function capturePhoto() {
+    const video = document.getElementById('video');
+    const frame = document.getElementById('captureFrame');
+    const videoContainer = document.getElementById('videoContainer');
+    
+    const frameRect = frame.getBoundingClientRect();
+    const videoRect = videoContainer.getBoundingClientRect();
+    const scaleX = video.videoWidth / videoRect.width;
+    const scaleY = video.videoHeight / videoRect.height;
+    const x = (frameRect.left - videoRect.left) * scaleX;
+    const y = (frameRect.top - videoRect.top) * scaleY;
+    const width = frameRect.width * scaleX;
+    const height = frameRect.height * scaleY;
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, x, y, width, height, 0, 0, width, height);
+    
+    const dataUrl = canvas.toDataURL('image/jpeg');
+    resizeAndUpload(dataUrl);
+    stopCamera();
+    $('#cameraModal').modal('hide');
+}
+
+// File selection
+function selectFromFiles() {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.onchange = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                resizeAndUpload(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    fileInput.click();
+    $('#photoOptionsModal').modal('hide');
+}
+
+// Make the capture frame movable
+document.addEventListener('DOMContentLoaded', function() {
+    const frame = document.getElementById('captureFrame');
+    let isDragging = false;
+    let startX, startY;
+
+    frame.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startX = e.clientX - frame.offsetLeft;
+        startY = e.clientY - frame.offsetTop;
     });
-  </script>
-</body>
-</html>
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            frame.style.left = (e.clientX - startX) + 'px';
+            frame.style.top = (e.clientY - startY) + 'px';
+        }
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
+});
+</script>
+{% endblock %}

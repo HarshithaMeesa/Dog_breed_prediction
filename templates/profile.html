@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Dog Breed Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('/static/images/dog_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .profile-card {
+            background: hsla(0, 16%, 96%, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .breed-card {
+            background: hsla(0, 16%, 96%, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .breed-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .btn-custom {
+            background: #d76814;
+            color: hsla(0, 90%, 42%, 0.7);
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            color: hsla(0, 90%, 32%, 0.9);
+        }
+        h2, h3 {
+            color: white;
+        }
+        p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <h2 class="text-center mb-4">Profile</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="text-center">
+                {% if user.profile_picture %}
+                    <img src="{{ url_for('static', filename=user.profile_picture) }}" alt="Profile Picture" class="profile-pic">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/default_profile.jpg') }}" alt="Profile Picture" class="profile-pic">
+                {% endif %}
+            </div>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email if user.email else 'Not provided' }}</p>
+            <p><strong>Phone Number:</strong> {{ user.phone_number if user.phone_number else 'Not provided' }}</p>
+            <div class="text-center">
+                <a href="{{ url_for('edit_profile') }}" class="btn btn-custom">Edit Profile</a>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+        <div class="saved-breeds">
+            <h3>Saved Breeds</h3>
+            {% if saved_breeds %}
+                <div class="row">
+                    {% for breed in saved_breeds %}
+                        <div class="col-md-4">
+                            <div class="breed-card">
+                                <h5>{{ breed.breed_name }}</h5>
+                                {% if breed.image_url %}
+                                    <img src="{{ breed.image_url }}" alt="{{ breed.breed_name }}" class="breed-img">
+                                {% elif breed.image_path %}
+                                    <img src="{{ url_for('static', filename=breed.image_path) }}" alt="{{ breed.breed_name }}" class="breed-img">
+                                {% else %}
+                                    <p>No image available</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No saved breeds yet.</p>
+            {% endif %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                    alert.classList.add('fade');
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
